@@ -17,6 +17,9 @@ public class Burger {
         this.sauce = sauce;
     }
 
+    public Burger() {
+    }
+
     public Burger(BreadType breadType, MeatType meatType, Sauce sauce, boolean cheese, boolean jalapeno, boolean tomato, boolean lettuce, boolean pickle, boolean bacon, boolean onion, boolean pineapple) {
         this.breadType = breadType;
         this.meatType = meatType;
@@ -135,4 +138,78 @@ public class Burger {
                 ", pineapple=" + pineapple +
                 '}';
     }
+
+    public static BurgerBuilder builder(BreadType breadType, MeatType meatType, Sauce sauce) {
+        return new BurgerBuilder(breadType, meatType, sauce);
+    }
+
+public static class BurgerBuilder {
+    private BreadType breadType;
+    private MeatType meatType;
+    private Sauce sauce;
+    private boolean cheese;
+    private boolean jalapeno;
+    private boolean tomato;
+    private boolean lettuce;
+    private boolean pickle;
+    private boolean bacon;
+    private boolean onion;
+    private boolean pineapple;
+
+    public BurgerBuilder(BreadType breadType, MeatType meatType, Sauce sauce) {
+        this.breadType = breadType;
+        this.meatType = meatType;
+        this.sauce = sauce;
+    }
+
+    public BurgerBuilder withCheese(boolean cheese) {
+        this.cheese = cheese;
+        return this;
+    }
+    public BurgerBuilder withJalapeno(boolean jalapeno) {
+        this.jalapeno = jalapeno;
+        return this;
+    }
+    public BurgerBuilder withToamto(boolean toamto) {
+        this.tomato = toamto;
+        return this;
+    }
+    public BurgerBuilder withLettuce(boolean lettuce) {
+        this.lettuce = lettuce;
+        return this;
+    }
+    public BurgerBuilder withPickle(boolean pickle) {
+        this.pickle = pickle;
+        return this;
+    }
+    public BurgerBuilder withBacon(boolean bacon) {
+        this.bacon = bacon;
+        return this;
+    }
+    public BurgerBuilder withOnion(boolean onion) {
+        this.onion = onion;
+        return this;
+    }
+    public BurgerBuilder withPineapple(boolean pineapple) {
+        this.pineapple = pineapple;
+        return this;
+    }
+    public Burger build() {
+        Burger burger = new Burger();
+        burger.breadType = this.breadType;
+        burger.meatType = this.meatType;
+        burger.sauce = this.sauce;
+        burger.cheese = this.cheese;
+        burger.jalapeno = this.jalapeno;
+        burger.tomato = this.tomato;
+        burger.lettuce = this.lettuce;
+        burger.pickle = this.pickle;
+        burger.bacon = this.bacon;
+        burger.onion = this.onion;
+        burger.pineapple = this.pineapple;
+
+        return burger;
+    }
+}
+
 }
